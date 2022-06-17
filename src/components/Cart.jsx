@@ -6,14 +6,14 @@ const Cart = (props) => {
   const [dropdown, setDropdown] = useState(false);
   const [visibility, setVisibility] = useState(false);
 
-  let lists = [...props.items];
-  let newList = [];
-
-  const addItem = (image) => {
-    let lists = [...props.items];
-    console.log(lists.filter(item => item.image == image))
-    // return lists.filter(item => item.image == image)
-  };
+  const items= [
+    {
+      name: "product1",
+      image: "bg-product1",
+      price: "$125",
+      quantity: props.count,
+    }
+  ]
 
   const handleToggle = () => {
     setVisibility(!visibility);
@@ -26,9 +26,9 @@ const Cart = (props) => {
     return cartClassName;
   };
 
+
   const hideDropdown = () => setDropdown(false);
 
-  console.log(lists);
   return (
     <div
       className="p-0 px-6 pt-0 text-white bg-white content-center cursor-pointer leading-tight transition duration-150 ease-in-out overflow-visible "
@@ -44,7 +44,7 @@ const Cart = (props) => {
           <div className="border-2">
             <h2 className=" border-y-2">Cart</h2>
             <ul>
-              {lists.map((item) => (
+              {items.map((item) => (
                 <li key={item.name} className="px-2 py-1 flex">
                   <div
                     className={`p-4 bg-cover bg-center bg-norepeat ${item.image}`}
@@ -56,7 +56,7 @@ const Cart = (props) => {
                     </span>
                     ${Number(item.price.slice(1)) * item.quantity}
                   </div>
-                  <button>{/* <Delete onClick={removeRow} /> */}</button>
+                  <button><Delete onClick={props.removeRow} /></button>
                 </li>
               ))}
             </ul>

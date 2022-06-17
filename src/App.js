@@ -9,14 +9,6 @@ class App extends Component {
   state = {
     invisible: true,
     count: 0,
-    items: [
-      {
-        name: "product1",
-        image: "bg-product1",
-        price: "$125",
-        quantity: this.count,
-      }
-    ],
   };
 
   decreaseCount = () => {
